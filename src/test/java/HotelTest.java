@@ -20,6 +20,8 @@ public class HotelTest {
         bedroom1 = new Bedroom(RoomType.SINGLE, 23);
         bedroom2 = new Bedroom(RoomType.DOUBLE, 29);
         bedrooms = new ArrayList<>();
+        conferenceRoom1 = new ConferenceRoom(RoomType.MEETING, "Conference Room Name");
+        conferenceRoom2 = new ConferenceRoom(RoomType.MEETING, "Conference Room Name2");
         conferenceRooms = new ArrayList<>();
         bedrooms.add(bedroom1);
         bedrooms.add(bedroom2);
@@ -42,5 +44,20 @@ public class HotelTest {
         hotel.checkInGuestToBedroom(guest, RoomType.SINGLE);
         hotel.checkOutGuestFromBedroom(guest);
         assertEquals(0, bedroom1.getNumberOfGuests());
+    }
+
+    @Test
+    public void canCheckInGuestToConference(){
+        hotel.checkInGuestToConference(guest);
+
+        assertEquals(1, conferenceRoom1.getNumberOfGuests());
+
+    }
+
+    @Test
+    public void canCheckOutFromConference(){
+        hotel.checkInGuestToConference(guest);
+        hotel.checkOutGuestFromConference(guest);
+        assertEquals(0, conferenceRoom1.getNumberOfGuests());
     }
 }

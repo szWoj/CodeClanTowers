@@ -30,4 +30,30 @@ public class Hotel {
             }
         }
     }
+
+    public void checkInGuestToConference(Guest guest){
+//        const listType = desiredRoomType === MEETING ? conferenceRooms : bedrooms;
+
+        for(int i = 0; i < conferenceRooms.size(); i++){
+            if(!conferenceRooms.get(i).isRoomFull()){
+                conferenceRooms.get(i).addGuest(guest);
+                break;
+            }
+
+        }
+    }
+
+
+    public void checkOutGuestFromConference(Guest guest){
+        for(int i = 0; i < conferenceRooms.size(); i++){
+            if(conferenceRooms.get(i).findGuest(guest)){
+                conferenceRooms.get(i).removeGuest(guest);
+            }
+        }
+    }
+
+//    public Booking bookRoom(Bedroom bedroom, int numOfNights){
+//
+//        return new Booking(bedroom, numOfNights);
+//    }
 }
