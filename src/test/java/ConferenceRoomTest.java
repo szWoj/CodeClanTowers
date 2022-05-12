@@ -10,13 +10,13 @@ import static org.junit.Assert.assertEquals;
 
         @Before
         public void before(){
-            conferenceRoom = new ConferenceRoom(RoomType.SINGLE, "ImportantMeetingRoom");
+            conferenceRoom = new ConferenceRoom(RoomType.MEETING, "ImportantMeetingRoom");
             guest = new Guest("Jim Smith");
         }
 
         @Test
         public void hasCapacity(){
-            assertEquals(1, conferenceRoom.getRoomCapacity());
+            assertEquals(20, conferenceRoom.getRoomCapacity());
         }
 
         @Test
