@@ -17,6 +17,9 @@ public abstract class Room {
     public int getRoomCapacity() {
         return roomType.getCapacity();
     }
+    public boolean isRoomFull(){
+        return getNumberOfGuests() == getRoomCapacity();
+    }
 
     public ArrayList<Guest> getGuestList() {
         return guestList;
@@ -32,5 +35,8 @@ public abstract class Room {
 
     public int getNumberOfGuests(){
         return guestList.size();
+    }
+    public boolean findGuest(Guest guest){
+        return guestList.contains(guest);
     }
 }

@@ -2,29 +2,32 @@ import java.util.ArrayList;
 
 public class Hotel {
 
-    private ArrayList bedrooms;
-    private ArrayList conferenceRooms;
+    private ArrayList<Bedroom> bedrooms;
+    private ArrayList<ConferenceRoom> conferenceRooms;
 
     public Hotel(ArrayList bedrooms, ArrayList conferenceRooms) {
         this.bedrooms = bedrooms;
         this.conferenceRooms = conferenceRooms;
     }
 
-    public void checkInGuest(Guest guest, RoomType desiredRoomType){
-//        boolean checkedIn = false;
-//        while(!checkedIn){
-//
-//        }
-//        Bedroom chosenBedroom = bedrooms.stream().findFirst()
+    public void checkInGuestToBedroom(Guest guest, RoomType desiredRoomType){
+//        const listType = desiredRoomType === MEETING ? conferenceRooms : bedrooms;
+
         for(int i = 0; i < bedrooms.size(); i++){
-            if(bedrooms.get(i).roomType == desiredRoomType){
+            if(bedrooms.get(i).getRoomType() == desiredRoomType && !bedrooms.get(i).isRoomFull()){
                 bedrooms.get(i).addGuest(guest);
                 break;
             }
+
         }
     }
 
-    public void checkOutGuest(Guest guest){
 
+    public void checkOutGuestFromBedroom(Guest guest){
+        for(int i = 0; i < bedrooms.size(); i++){
+            if(bedrooms.get(i).findGuest(guest)){
+                bedrooms.get(i).removeGuest(guest);
+            }
+        }
     }
 }
